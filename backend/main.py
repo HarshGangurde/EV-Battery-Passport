@@ -1,7 +1,6 @@
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-
 from pydantic import BaseModel
 import pandas as pd
 import joblib
@@ -15,14 +14,14 @@ init_db()
 
 
 # Configuration
-MODEL_DIR = "../models"
+MODEL_DIR = "C:\\Users\\LENOVO\\Desktop\\EV BATTERY\\EV\\models"
 STAGE1_MODELS = {
     'charging_cycles': 'stage1_charging_cycles.pkl',
     'efficiency': 'stage1_efficiency.pkl',
     'battery_temp': 'stage1_battery_temp.pkl'
 }
 STAGE2_MODEL = 'stage2_soh_model.pkl'
-ANOMALY_METRICS = "../results/anomaly_metrics.csv"
+ANOMALY_METRICS = "C:\\Users\\LENOVO\\Desktop\\EV BATTERY\\EV\\results\\anomaly_metrics.csv"
 
 app = FastAPI(title="EV Battery Health Intelligence Platform")
 app.add_middleware(
@@ -46,6 +45,10 @@ app.add_middleware(
 # Load Models
 models = {}
 anomaly_threshold = 0.0
+
+@app.get("/")
+def home():
+    return {"message": "EV Battery API is running 🚀"}
 
 @app.on_event("startup")
 def load_artifacts():
@@ -93,7 +96,7 @@ def register_vehicle(data: VehicleRegister):
 
     conn = sqlite3.connect("vehicle.db")
     cursor = conn.cursor()
-
+ 
     cursor.execute("""
     INSERT OR IGNORE INTO vehicle
     VALUES(?,?,?,?,?,?)
