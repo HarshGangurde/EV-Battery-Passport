@@ -9,19 +9,25 @@ import os
 from datetime import date
 import sqlite3
 from database import init_db
+import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
 init_db()
 
 
 # Configuration
-MODEL_DIR = "C:\\Users\\LENOVO\\Desktop\\EV BATTERY\\EV\\models"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
+ANOMALY_METRICS = os.path.join(BASE_DIR, "results", "anomaly_metrics.csv")
+
 STAGE1_MODELS = {
     'charging_cycles': 'stage1_charging_cycles.pkl',
     'efficiency': 'stage1_efficiency.pkl',
     'battery_temp': 'stage1_battery_temp.pkl'
 }
 STAGE2_MODEL = 'stage2_soh_model.pkl'
-ANOMALY_METRICS = "C:\\Users\\LENOVO\\Desktop\\EV BATTERY\\EV\\results\\anomaly_metrics.csv"
 
 app = FastAPI(title="EV Battery Health Intelligence Platform")
 app.add_middleware(
@@ -422,3 +428,8 @@ def get_vehicles(user_id: str):
         })
 
     return {"vehicles": vehicles}
+
+
+
+##uvicorn main:app --host 0.0.0.0 --port $PORT
+## uvicorn main:app --reload

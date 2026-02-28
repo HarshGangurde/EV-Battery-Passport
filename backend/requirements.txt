@@ -6,3 +6,4 @@ pandas
 joblib
 matplotlib
 seaborn
+python-dotenv

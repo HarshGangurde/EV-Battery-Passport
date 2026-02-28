@@ -252,7 +252,7 @@ frontend/.vite/
 # Models / Data (Uncomment if dataset or models are too large for GitHub)
 node_modules/
 data/*.csv
-#models/*.pkl
+models/*.pkl
 #results/* .csv
 # Backend (FastAPI, SQLite etc.)
 *.sqlite3
