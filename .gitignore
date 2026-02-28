@@ -253,7 +253,7 @@ frontend/.vite/
 node_modules/
 data/*.csv
 #models/*.pkl
-results/* .csv
+#results/* .csv
 # Backend (FastAPI, SQLite etc.)
 *.sqlite3
 *.db
