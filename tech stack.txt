@@ -1,0 +1,27 @@
+Frontend:
+- Next.js
+- TypeScript
+- TailwindCSS
+
+Backend:
+- FastAPI
+- Pydantic
+- Structured Logging
+- Async endpoints
+
+ML:
+- Scikit-learn / PyTorch
+- Model versioning
+- Separate inference layer
+
+DevOps:
+- Docker
+- Docker Compose
+- GitHub Actions
+- Railway or Fly.io
+
+Extras:
+- Health checks
+- Metrics endpoint
+- .env management
+- Production logging

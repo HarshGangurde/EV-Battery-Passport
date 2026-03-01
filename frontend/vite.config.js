@@ -5,5 +5,10 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.VITE_BASE_PATH || "/EV-Battery-Passport" ,
+  base: "/static/" ,
+    build: {
+    outDir: "dist",
+    emptyOutDir: true
+  }
 })
+
