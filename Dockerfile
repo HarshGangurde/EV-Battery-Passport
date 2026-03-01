@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY backend/app /app/app
 
 # Copy other backend files if needed
-COPY backend/vehicle.db /app/vehicle.db
+#COPY backend/vehicle.db /app/vehicle.db
 
 # Copy built frontend from first stage into static folder
 COPY --from=frontend-builder /frontend/dist /app/app/static
