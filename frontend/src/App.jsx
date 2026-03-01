@@ -80,7 +80,7 @@ function App() {
         try {
 
             const res = await axios.post(
-                "http://localhost:8000/register_vehicle",
+                "/register_vehicle/",
                 {
                     user_id: userId,
                     vehicle_id: vehicleId,
@@ -120,7 +120,7 @@ function App() {
         try {
 
             const res = await axios.get(
-                `http://localhost:8000/get_vehicles/${id}`
+                `/get_vehicles/${id}`
             );
 
             if (res.data.vehicles.length > 0) {
@@ -152,7 +152,7 @@ function App() {
 
         try {
             const res = await axios.get(
-                `http://localhost:8000/get_vehicles/${uid}`
+                `/get_vehicles/${uid}`
             );
 
             setVehicles(res.data.vehicles);
@@ -173,7 +173,7 @@ function App() {
         try {
 
             const response = await axios.post(
-                "http://localhost:8000/predict",
+                "/predict/",
                 {
                     user_id: userId,
                     vehicle_id: selectedVehicle.vehicle_id,
@@ -194,7 +194,7 @@ function App() {
         try {
 
             const res = await axios.post(
-                "http://localhost:8000/update_vehicle",
+                "/update_vehicle/",
                 {
                     user_id: userId,
                     vehicle_id: selectedVehicle.vehicle_id,
