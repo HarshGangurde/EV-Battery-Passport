@@ -80,7 +80,7 @@ function App() {
         try {
 
             const res = await axios.post(
-                "/register_vehicle/",
+                `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/register_vehicle`,
                 {
                     user_id: userId,
                     vehicle_id: vehicleId,
@@ -120,7 +120,7 @@ function App() {
         try {
 
             const res = await axios.get(
-                `/get_vehicles/${id}`
+                `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/get_vehicles/${id}`
             );
 
             if (res.data.vehicles.length > 0) {
@@ -152,7 +152,7 @@ function App() {
 
         try {
             const res = await axios.get(
-                `/get_vehicles/${uid}`
+                `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/get_vehicles/${uid}`
             );
 
             setVehicles(res.data.vehicles);
@@ -173,7 +173,7 @@ function App() {
         try {
 
             const response = await axios.post(
-                "/predict/",
+                `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/predict`,
                 {
                     user_id: userId,
                     vehicle_id: selectedVehicle.vehicle_id,
@@ -194,7 +194,7 @@ function App() {
         try {
 
             const res = await axios.post(
-                "/update_vehicle/",
+                `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/update_vehicle`,
                 {
                     user_id: userId,
                     vehicle_id: selectedVehicle.vehicle_id,
@@ -506,40 +506,59 @@ function App() {
                                     Register Vehicle
                                 </h3>
 
-                                <input
-                                    placeholder="Vehicle ID"
-                                    className={profileInput}
-                                    onChange={(e) => setVehicleId(e.target.value)}
-                                />
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="text-slate-400 text-xs mb-1 block">Vehicle ID</label>
+                                        <input
+                                            placeholder="Vehicle ID"
+                                            className={profileInput}
+                                            onChange={(e) => setVehicleId(e.target.value)}
+                                        />
+                                    </div>
 
-                                <select
-                                    className={profileInput + " mt-2"}
-                                    onChange={(e) => setBatteryTypeReg(e.target.value)}
-                                >
-                                    <option>Select Battery</option>
-                                    <option value="Li-ion">Li-ion</option>
-                                    <option value="LiFePO4">LFP</option>
-                                    <option value="NCM_Type1">NCM Type 1</option>
-                                </select>
+                                    <div>
+                                        <label className="text-slate-400 text-xs mb-1 block">Battery Type</label>
+                                        <select
+                                            className={profileInput}
+                                            onChange={(e) => setBatteryTypeReg(e.target.value)}
+                                        >
+                                            <option>Select Battery</option>
+                                            <option value="Li-ion">Li-ion</option>
+                                            <option value="LiFePO4">LFP</option>
+                                            <option value="NCM_Type1">NCM Type 1</option>
+                                        </select>
+                                    </div>
 
-                                <input
-                                    type="number"
-                                    placeholder="Buying Price"
-                                    className={profileInput + " mt-2"}
-                                    onChange={(e) => setBuyingPrice(e.target.value)}
-                                />
+                                    <div>
+                                        <label className="text-slate-400 text-xs mb-1 block">Buying Price (₹)</label>
+                                        <input
+                                            type="number"
+                                            placeholder="Buying Price"
+                                            className={profileInput}
+                                            onChange={(e) => setBuyingPrice(e.target.value)}
+                                        />
+                                    </div>
 
-                                <input
-                                    type="date"
-                                    className={profileInput + " mt-2"}
-                                    onChange={(e) => setBuyingDate(e.target.value)}
-                                />
+                                    <div>
+                                        <label className="text-slate-400 text-xs mb-1 block">Buying Date</label>
+                                        <input
+                                            type="date"
+                                            placeholder="Buying Date"
+                                            className={profileInput}
+                                            onChange={(e) => setBuyingDate(e.target.value)}
+                                        />
+                                    </div>
 
-                                <input
-                                    type="date"
-                                    className={profileInput + " mt-2"}
-                                    onChange={(e) => setManufactureDate(e.target.value)}
-                                />
+                                    <div>
+                                        <label className="text-slate-400 text-xs mb-1 block">Manufacturing Date</label>
+                                        <input
+                                            type="date"
+                                            placeholder="Manufacturing Date"
+                                            className={profileInput}
+                                            onChange={(e) => setManufactureDate(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
 
                                 <button
                                     onClick={registerVehicle}
