@@ -860,7 +860,7 @@ function App() {
                     </div>
 
                     {/* Floating Chat */}
-                    <ChatBot healthData={result} />
+                    {/* <ChatBot healthData={result} /> */}
 
                 </main>
             </div>
